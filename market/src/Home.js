@@ -12,15 +12,10 @@ export default function Home(props){
                     alt=''
                     />
                 </div>
-                <div className="home-buttons">
-                    <button>
-                        Log In
-                    </button>
-                </div>
             </div>
             <div className="items-list">
                 <h2>Items</h2>
-                {items.map(item => (
+                {/* {items.map(item => (
                     <div
                     className="item-card"
                     key={item.id}
@@ -32,8 +27,7 @@ export default function Home(props){
                     />
                     <p>{item.name}</p>
                     <p>{item.price}</p>
-                    </div>
-                ))}
+                    </div> */}
             </div>
         </div>
     )
