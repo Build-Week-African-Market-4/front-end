@@ -8,7 +8,7 @@ import formSchema from './validation/formSchema';
 import schema from './validation/schema';
 import axios from 'axios';
 import { reach } from 'yup';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 const initialLoginValues = {
   username: '',
@@ -20,9 +20,7 @@ const initialLoginErrors = {
   password: '',
 }
 
-
 const initialItems = []
-
 
 const initialItemValues = {
   name: '',
@@ -49,7 +47,6 @@ function App() {
   const {itemErrors, setItemErrors} = useState(initialItemErrors);
 
   const [disabled, setDisabled] = useState(true);
-
   
   //---------- Login Functions ----------  
   //Posts new login
@@ -57,7 +54,6 @@ function App() {
     axios.post("#", newLogin)
       .then(response => {
           setLogin(response.data);
-
       })
       .catch(error => {
           console.log(error);
@@ -67,9 +63,7 @@ function App() {
       })
   }
 
-
   //Submit new login credentials
-
   const submitLogin = () => {
       const newLogin = {
           username: loginValues.username.trim(),
@@ -77,9 +71,6 @@ function App() {
       }
       postLogin(newLogin);
   }
-
-
-  const inputChange = (name, value) => {
 
   //Validate and set new login input changes
   const loginInputChange = (name, value) => {
@@ -90,21 +81,13 @@ function App() {
     })
   }
 
-
-  useEffect(() => {
-    getItems()
-  }, [])
-
-
   //Check validity of login values every time a login value is changed
-
   useEffect(() => {
     formSchema.isValid(loginValues).then(valid => setDisabled(!valid))
   }, [loginValues])
 
 
   //Validate login values and display login errors if not valid
-
   const validate = (name, value) => {
     reach(formSchema, name)
       .validate(value)
@@ -112,15 +95,18 @@ function App() {
       .catch(err => setLoginErrors({ ...loginErrors, [name]: err.errors[0]}))
   }
 
-
 //---------- Submit Item Functions ---------- 
-   //Get new Items
-   const getItems = () =>{
+   //Get item data
+   const getItems = () => {
     axios.get("#")
-      .then(res => {
-        setItems(res.data)
+      .then(response => {
+        setItems(response.data)
+      })
+      .catch(error => {
+        console.log(error);
       })
   }
+
   //Posts new item to item listings
   const postItem = newItem => {
     axios.post("#", newItem)
@@ -171,27 +157,29 @@ function App() {
   return (
     <div className = "marketApp">
       <div className="home-header">
-                <nav>
-                    <h1>African Marketplace</h1>
-                    <div className="nav-links">
-                        <Link to='/'>Home</Link>
-                        <Link to='/login'>Log In</Link>
-                    </div>
-                </nav>
-            </div>   
+          <nav>
+              <h1>African Marketplace</h1>
+              <div className="nav-links">
+                  <Link to='/'>Home</Link>
+                  <Link to='/login'>Log In</Link>
+              </div>
+          </nav>
+      </div>
+
       <Route exact path = '/'>
           <Home items = {items} />
       </Route>    
+
       <Route path = '/login'>
           <Login
               values = {loginValues}
               login = {submitLogin}
-              input = {inputChange}
               input = {loginInputChange}
               disabled = {disabled}
               errors = {loginErrors}
           />
       </Route>
+
       <Route path = '/listItem'>
           <ItemForm
               values = {itemValues}
