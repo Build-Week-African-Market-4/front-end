@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Home(){
+export default function Home(props){
+    const { items } = props
     return(
         <div className="home">
             <div className="home-header">
@@ -9,7 +10,6 @@ export default function Home(){
                     <div className="nav-links">
                         <Link>Home</Link>
                         <Link>Log In</Link>
-                        <Link>Items</Link>
                     </div>
                 </nav>
             </div>
@@ -25,10 +25,24 @@ export default function Home(){
                     <button>
                         Log In
                     </button>
-                    <button>
-                        Items
-                    </button>
                 </div>
+            </div>
+            <div className="items-list">
+                <h2>Items</h2>
+                {items.map(item => (
+                    <div
+                    className="item-card"
+                    key={item.id}
+                    >
+                    <img 
+                    className="items-list-image"
+                    src={item.imageUrl}
+                    alt={item.name}
+                    />
+                    <p>{item.name}</p>
+                    <p>{item.price}</p>
+                    </div>
+                ))}
             </div>
         </div>
     )
