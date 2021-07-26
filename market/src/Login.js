@@ -4,8 +4,8 @@ function Login(props) {
     const { values, login, change, disabled, errors, } = props;
 
     const handleChange = event => {
-        const { name, value, type } = event.target;
-        change(name);
+        const { name, value, } = event.target;
+        change(name, value);
     }
 
     const handleLogin = event => {
