@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Home from './Home'
 import Login from './Login';
 import formSchema from './formSchema';
 import axios from 'axios';
@@ -62,6 +63,7 @@ function App() {
   }
 
   return (
+    <Home />
     <div className = "marketApp">      
       <Route path = '/login'>
           <Login
