@@ -4,15 +4,6 @@ export default function Home(props){
     const { items } = props
     return(
         <div className="home">
-            <div className="home-header">
-                <nav>
-                    <h1>African Marketplace</h1>
-                    <div className="nav-links">
-                        <Link>Home</Link>
-                        <Link>Log In</Link>
-                    </div>
-                </nav>
-            </div>
             <div className="home-body">
                 <div>
                     <img 
