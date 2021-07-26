@@ -8,6 +8,9 @@ const Banner = styled.div`
     background-size: cover;
     background-position: center
 `
+const ItemsWrapper = styled.div`
+    text-align: center;
+`
 
 
 export default function Home(props){
@@ -19,9 +22,12 @@ export default function Home(props){
                 
             </Banner>
             </div>
-
-            <div className="items-list">
-                <h2>Items</h2>
+            <ItemsWrapper>
+                <h3>See whats new.</h3>
+                <div>
+                    New Items Go Here
+                </div>
+            </ItemsWrapper>            
                 {/* {items.map(item => (
                     <div
                     className="item-card"
@@ -35,7 +41,6 @@ export default function Home(props){
                     <p>{item.name}</p>
                     <p>{item.price}</p>
                     </div> */}
-            </div>
         </div>
     )
 }
