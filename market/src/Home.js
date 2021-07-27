@@ -25,14 +25,13 @@ export default function Home(){
             </Banner>
             <ItemsWrapper>
                 <h3>See whats new.</h3>
-
                 <button
                     onClick={routeToItems}
                     className='items-button'
                     >
                     Items List
                     </button>
-         </ItemsWrapper>            
+            </ItemsWrapper>            
         </div>
     )
 }
