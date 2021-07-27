@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { history } from 'react';
 
 function Login(props) {
     const { values, login, change, disabled, errors, } = props;
@@ -9,8 +11,19 @@ function Login(props) {
     }
 
     const handleLogin = event => {
-        event.preventDefault()
-        login()
+        event.preventDefault();
+        // axios.post(‘http://tokenurl/api’, props.values)
+        // //TBD here:
+        // // The correct URL to get the token and the dot notation for the token.
+        // .then(res => {
+        //     console.log(res);
+        //     localStorage.setItem(‘token’, res.data.payload);
+        //     history.push(‘/homepage’);
+        // //TBD here: Double check the history.push
+        // })
+        // .get( err => {
+        //     console.log(err);
+        // })
     }
 
     return (
