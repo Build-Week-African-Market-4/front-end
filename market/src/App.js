@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Home from './Home'
 import Login from './Login';
 import ItemForm from './ItemForm';
 import ItemsList from './ItemsList'
+import Header from './Header'
 import formSchema from './validation/formSchema';
 import schema from './validation/schema';
 import axios from 'axios';
@@ -161,15 +161,7 @@ function App() {
 
   return (
     <div className = "marketApp">
-      <div className="home-header">
-          <nav>
-              <h1>African Marketplace</h1>
-              <div className="nav-links">
-                  <Link to='/'>Home</Link>
-                  <Link to='/login'>Log In</Link>
-              </div>
-          </nav>
-      </div>
+      <Header />
 
       <Route exact path = '/'>
           <Home />
