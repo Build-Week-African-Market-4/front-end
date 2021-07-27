@@ -57,7 +57,7 @@ function App() {
   //---------- Login Functions ----------  
   //Posts new login
   const postLogin = newLogin => {
-    axios.post("#", newLogin)
+    axios.post("http://tokenurl/api", newLogin)
       .then(response => {
           setLogin(response.data);
       })
@@ -113,9 +113,6 @@ function App() {
         console.log(error);
       })
   }
-  useEffect(() => {
-    getItems()
-  },[])
 
   //Posts new item to item listings
   const postItem = newItem => {
@@ -150,6 +147,11 @@ function App() {
       [name]: value
     })
   }
+
+  //Get
+  useEffect(() => {
+    getItems()
+  },[])
 
   //Check validity of item values every time a item value is changed
   useEffect(() => {

@@ -11,15 +11,15 @@ function Login(props) {
     };
 
     const handleLogin = event => {
-        event.preventDefault();
+        event.preventDefault()
+        login()
         // axios.post('http://tokenurl/api', props.values)
-        // //TBD here:
         // // The correct URL to get the token and the dot notation for the token.
         // .then(res => {
         //     console.log(res);
-        //     localStorage.setItem('token', res.data.payload);
-        //     history.push('/homepage');
-        // //TBD here: Double check the history.push 
+        //     localStorage.setItem(‘token’, res.data.payload);
+        //     history.push(‘/homepage’);
+        // //TBD here: Double check the history.push
         // })
         // .get( err => {
         //     console.log(err);
@@ -33,7 +33,7 @@ function Login(props) {
             <div className = "login inputs">
                 <label>Username
                     <input
-                        // value = {values.username}
+                        value = {values.username}
                         onChange= {handleChange}
                         name = 'username'
                         type = 'text'
@@ -42,7 +42,7 @@ function Login(props) {
 
                 <label>Password
                     <input
-                        // value = {values.password}
+                        value = {values.password}
                         onChange = {handleChange}
                         name = 'password'
                         type = 'password'
@@ -54,8 +54,8 @@ function Login(props) {
                 <button disabled = {disabled}>Login</button>
 
                 <div className = 'errors'>
-                    {/* <div>{errors.username}</div>
-                    <div>{errors.password}</div> */}
+                    <div>{errors.username}</div>
+                    <div>{errors.password}</div>
                 </div>
             </div>
         </form>
