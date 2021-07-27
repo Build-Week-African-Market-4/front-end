@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Home from './Home'
 import Login from './Login';
+import HomePage from './Home'
 import formSchema from './formSchema';
 import axios from 'axios';
 import { reach } from 'yup';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 const initialLoginValues = {
   username: '',
@@ -63,18 +65,45 @@ function App() {
   }
 
   return (
-    <Home />
-    <div className = "marketApp">      
-      <Route path = '/login'>
-          <Login
-              values = {loginValues}
-              login = {submitLogin}
-              input = {inputChange}
-              disabled = {disabled}
-              errors = {loginErrors}
-          />
-      </Route>
-    </div>
+    <Router>
+
+      <div className = "marketApp"> 
+        <div classname = 'nav'>
+                <nav>
+                    <h1>African Marketplace</h1>
+                    <div className="nav-links">
+                        <ul>
+                            <li>
+                                <Link>Home</Link>
+                            </li>
+                            <li>
+                                <Link to='/login'>Log In</Link>
+                            </li>
+                            <li>
+                                <Link>Items</Link>
+                            </li>                        
+                        </ul>
+                    </div>
+                </nav>
+
+        </div>
+        <Home /> 
+        <Login
+          values = {loginValues}
+          login = {submitLogin}
+          input = {inputChange}
+          disabled = {disabled}
+          errors = {loginErrors}
+        />
+    
+        <Switch>
+            <Route exact path='/login' component={Login}/>
+            <Route exact path='/homepage/' component={HomePage}/>
+            
+
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

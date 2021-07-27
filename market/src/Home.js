@@ -2,17 +2,7 @@ import React from 'react'
 
 export default function Home(){
     return(
-        <div className="home">
-            <div className="home-header">
-                <nav>
-                    <h1>African Marketplace</h1>
-                    <div className="nav-links">
-                        <Link>Home</Link>
-                        <Link>Log In</Link>
-                        <Link>Items</Link>
-                    </div>
-                </nav>
-            </div>
+
             <div className="home-body">
                 <div>
                     <img 
@@ -21,15 +11,7 @@ export default function Home(){
                     alt=''
                     />
                 </div>
-                <div className="home-buttons">
-                    <button>
-                        Log In
-                    </button>
-                    <button>
-                        Items
-                    </button>
-                </div>
             </div>
-        </div>
+    
     )
 }
