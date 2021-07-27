@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
+import axiosWithAuth from './utils/axiosWithAuth';
 
 const NavWrapper = styled.section `
     padding: 0% 1%;
@@ -45,6 +46,19 @@ const Cart = styled(Cart4)`
 `
 
 function Header() {
+
+    const logout = () => {
+        axiosWithAuth()
+        .post('/logout') //double check with API docs if "/logout" IS actually the correct endpoint
+        .then(res => {
+          localStorage.removeItem('token');
+          window.location.href = "/";
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      };
+
     return (
         <div>
             <NavWrapper>
@@ -65,6 +79,7 @@ function Header() {
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/listItem'>Seller Dashboard</NavLink>
                 <NavLink to = '/listItem'>Add Item</NavLink>
+                <NavLink onClick={logout}>Logout</NavLink>
                 <Cart />
             </NavLinks>
             </NavWrapper>
