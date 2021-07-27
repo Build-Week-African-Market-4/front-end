@@ -1,6 +1,6 @@
 import * as Yup from 'yup';
 
-const formSchema = Yup.object().shape({
+const schema = Yup.object().shape({
     name: Yup
         .string()
         .trim()
@@ -23,4 +23,4 @@ const formSchema = Yup.object().shape({
         ], 'Location is required'),
 })
 
-export default formSchema;
+export default schema;

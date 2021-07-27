@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Login(props) {
-    const { values, login, change, disabled, errors, } = props;
+    const { values, login, input, disabled, errors, } = props;
 
     const handleChange = event => {
         const { name, value, } = event.target;
-        change(name, value);
+        input(name, value);
     }
 
     const handleLogin = event => {

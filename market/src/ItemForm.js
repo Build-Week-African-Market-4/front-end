@@ -1,11 +1,11 @@
 import React from 'react';
 
 function ItemForm(props) {
-    const { values, change, submit, disabled, errors } = props;
+    const { values, input, submit, disabled, errors } = props;
 
     const handleChange = event => {
         const { name, value, } = event.target;
-        change(name, value);
+        input(name, value);
     }
 
     const handleSubmit = event => {
