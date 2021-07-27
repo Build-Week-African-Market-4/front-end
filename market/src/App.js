@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home'
 import Login from './Login';
 import ItemForm from './ItemForm';
+import ItemsList from './ItemsList'
 import Header from './Header'
 import formSchema from './validation/formSchema';
 import schema from './validation/schema';
@@ -42,7 +43,7 @@ function App() {
   const {loginValues, setLoginValues} = useState(initialLoginValues);
   const {loginErrors, setLoginErrors} = useState(initialLoginErrors);
 
-  const {items, setItems} = useState(initialItems)
+  const [items, setItems] = useState(initialItems)
   const {itemValues, setItemValues} = useState(initialItemValues);
   const {itemErrors, setItemErrors} = useState(initialItemErrors);
 
@@ -98,14 +99,18 @@ function App() {
 //---------- Submit Item Functions ---------- 
    //Get item data
    const getItems = () => {
-    axios.get("#")
+    axios.get("https://reqres.in/api/users")
       .then(response => {
-        setItems(response.data)
+        setItems(response.data.data)
+        console.log(response.data.data)
       })
       .catch(error => {
         console.log(error);
       })
   }
+  useEffect(() => {
+    getItems()
+  },[])
 
   //Posts new item to item listings
   const postItem = newItem => {
@@ -159,9 +164,11 @@ function App() {
       <Header />
 
       <Route exact path = '/'>
-          <Home items = {items} />
+          <Home />
       </Route>    
-
+      <Route path='/items-list'>
+        <ItemsList items = {items}/>
+      </Route>
       <Route path = '/login'>
           <Login
               values = {loginValues}
