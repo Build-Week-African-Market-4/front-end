@@ -7,7 +7,7 @@ const Banner = styled.div`
     background-image: url(${img});
     height: 35vh;
     background-size: cover;
-    background-position: center
+    background-position: center;
 `
 const ItemsWrapper = styled.div`
     text-align: center;
@@ -26,8 +26,8 @@ export default function Home(){
             <ItemsWrapper>
                 <h3>See whats new.</h3>
                 <button
-                    onClick={routeToItems}
-                    className='items-button'
+                    onClick = {routeToItems}
+                    className = 'items-button'
                     >
                     Items List
                     </button>
