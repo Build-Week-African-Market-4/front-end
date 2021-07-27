@@ -64,6 +64,7 @@ function Header() {
             <NavLinks>
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/listItem'>Seller Dashboard</NavLink>
+                <NavLink to = '/listItem'>Add Item</NavLink>
                 <Cart />
             </NavLinks>
             </NavWrapper>
