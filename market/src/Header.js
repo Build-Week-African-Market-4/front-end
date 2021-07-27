@@ -21,7 +21,7 @@ const Logo = styled(Link)`
     text-decoration: none;
     color: black;
     font-weight: bold;
-    padding 1%;
+    padding: 1%;
 `
 
 const NavLinks = styled.div`
