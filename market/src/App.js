@@ -129,7 +129,7 @@ function App() {
         name: itemValues.name.trim(),
         description: itemValues.description.trim(),
         price: itemValues.price.trim(),
-        location: itemValues.location.description.trim(),
+        location: itemValues.location.trim(),
     }
     postItem(newItem);
   }
@@ -150,13 +150,13 @@ function App() {
 
   //Check validity of item values every time a item value is changed
   useEffect(() => {
-    formSchema.isValid(itemValues).then(valid => setDisabled(!valid))
+    schema.isValid(itemValues).then(valid => setDisabled(!valid))
   }, [itemValues])
 
   //Validate item values and display item errors if not valid
   const validateItem = (name, value) => {
     reach(schema, name)
-      .validateItem(value)
+      .validate(value)
       .then(() => setItemErrors({ ...itemErrors, [name]: '' }))
       .catch(err => setItemErrors({ ...itemErrors, [name]: err.errors[0]}))
   }
@@ -184,7 +184,7 @@ function App() {
       <Route path = '/listItem'>
           <ItemForm
               values = {itemValues}
-              login = {submitItem}
+              submit = {submitItem}
               input = {itemInputChange}
               disabled = {disabled}
               errors = {itemErrors}
