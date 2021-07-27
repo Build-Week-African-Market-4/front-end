@@ -39,13 +39,13 @@ const initialItemErrors = {
 
 function App() {
   //States
-  const {login, setLogin} = useState([])
-  const {loginValues, setLoginValues} = useState(initialLoginValues);
-  const {loginErrors, setLoginErrors} = useState(initialLoginErrors);
+  const [login, setLogin] = useState([])
+  const [loginValues, setLoginValues] = useState(initialLoginValues);
+  const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
 
   const [items, setItems] = useState(initialItems)
-  const {itemValues, setItemValues} = useState(initialItemValues);
-  const {itemErrors, setItemErrors} = useState(initialItemErrors);
+  const [itemValues, setItemValues] = useState(initialItemValues);
+  const [itemErrors, setItemErrors] = useState(initialItemErrors);
 
   const [disabled, setDisabled] = useState(true);
   
