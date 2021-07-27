@@ -7,6 +7,14 @@ import formSchema from './formSchema';
 import axios from 'axios';
 import { reach } from 'yup';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import ItemForm from './ItemForm';
+import ItemsList from './ItemsList'
+import Header from './Header'
+import formSchema from './validation/formSchema';
+import schema from './validation/schema';
+import axios from 'axios';
+import { reach } from 'yup';
+import { Link, Route } from 'react-router-dom';
 
 const initialLoginValues = {
   username: '',
@@ -18,16 +26,40 @@ const initialLoginErrors = {
   password: '',
 }
 
-function App() {
-  const {logins, setLogins} = useState([])
-  const {loginValues, setLoginValues} = useState(initialLoginValues);
-  const {loginErrors, setLoginErrors} = useState(initialLoginErrors);
-  const [disabled, setDisabled] = useState(true);
+const initialItems = []
 
+const initialItemValues = {
+  name: '',
+  description: '',
+  price: '',
+  location: '',
+}
+
+const initialItemErrors = {
+  name: '',
+  description: '',
+  price: '',
+  location: '',
+}
+
+function App() {
+  //States
+  const [login, setLogin] = useState([])
+  const [loginValues, setLoginValues] = useState(initialLoginValues);
+  const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
+
+  const [items, setItems] = useState(initialItems)
+  const [itemValues, setItemValues] = useState(initialItemValues);
+  const [itemErrors, setItemErrors] = useState(initialItemErrors);
+
+  const [disabled, setDisabled] = useState(true);
+  
+  //---------- Login Functions ----------  
+  //Posts new login
   const postLogin = newLogin => {
     axios.post("#", newLogin)
       .then(response => {
-          setLogins(response.data);
+          setLogin(response.data);
       })
       .catch(error => {
           console.log(error);
@@ -37,6 +69,7 @@ function App() {
       })
   }
 
+  //Submit new login credentials
   const submitLogin = () => {
       const newLogin = {
           username: loginValues.username.trim(),
@@ -45,7 +78,8 @@ function App() {
       postLogin(newLogin);
   }
 
-  const inputChange = (name, value) => {
+  //Validate and set new login input changes
+  const loginInputChange = (name, value) => {
     validate(name, value)
     setLoginValues({
       ...loginValues,
@@ -53,10 +87,13 @@ function App() {
     })
   }
 
+  //Check validity of login values every time a login value is changed
   useEffect(() => {
     formSchema.isValid(loginValues).then(valid => setDisabled(!valid))
   }, [loginValues])
 
+
+  //Validate login values and display login errors if not valid
   const validate = (name, value) => {
     reach(formSchema, name)
       .validate(value)
@@ -64,46 +101,100 @@ function App() {
       .catch(err => setLoginErrors({ ...loginErrors, [name]: err.errors[0]}))
   }
 
+//---------- Submit Item Functions ---------- 
+   //Get item data
+   const getItems = () => {
+    axios.get("https://reqres.in/api/users")
+      .then(response => {
+        setItems(response.data.data)
+        console.log(response.data.data)
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+  useEffect(() => {
+    getItems()
+  },[])
+
+  //Posts new item to item listings
+  const postItem = newItem => {
+    axios.post("#", newItem)
+      .then(response => {
+          setItems([response.data, ...items]);
+      })
+      .catch(error => {
+          console.log(error);
+      })
+      .finally(() => {
+          setItemValues(initialItemValues);
+      })
+  }
+
+  //Submit new item values
+  const submitItem = () => {
+    const newItem = {
+        name: itemValues.name.trim(),
+        description: itemValues.description.trim(),
+        price: itemValues.price.trim(),
+        location: itemValues.location.description.trim(),
+    }
+    postItem(newItem);
+  }
+
+  //Validate and set new item input changes
+  const itemInputChange = (name, value) => {
+    validateItem(name, value)
+    setItemValues({
+      ...itemValues,
+      [name]: value
+    })
+  }
+
+  //Check validity of item values every time a item value is changed
+  useEffect(() => {
+    formSchema.isValid(itemValues).then(valid => setDisabled(!valid))
+  }, [itemValues])
+
+  //Validate item values and display item errors if not valid
+  const validateItem = (name, value) => {
+    reach(schema, name)
+      .validateItem(value)
+      .then(() => setItemErrors({ ...itemErrors, [name]: '' }))
+      .catch(err => setItemErrors({ ...itemErrors, [name]: err.errors[0]}))
+  }
+
   return (
-    <Router>
+   
+    <div className = "marketApp">
+      <Header />
 
-      <div className = "marketApp"> 
-        <div classname = 'nav'>
-                <nav>
-                    <h1>African Marketplace</h1>
-                    <div className="nav-links">
-                        <ul>
-                            <li>
-                                <Link>Home</Link>
-                            </li>
-                            <li>
-                                <Link to='/login'>Log In</Link>
-                            </li>
-                            <li>
-                                <Link>Items</Link>
-                            </li>                        
-                        </ul>
-                    </div>
-                </nav>
+      <Route exact path = '/'>
+          <Home />
+      </Route>    
+      <Route path='/items-list'>
+        <ItemsList items = {items}/>
+      </Route>
+      <Route path = '/login'>
+          <Login
+              values = {loginValues}
+              login = {submitLogin}
+              input = {loginInputChange}
+              disabled = {disabled}
+              errors = {loginErrors}
+          />
+      </Route>
 
-        </div>
-        <Home /> 
-        <Login
-          values = {loginValues}
-          login = {submitLogin}
-          input = {inputChange}
-          disabled = {disabled}
-          errors = {loginErrors}
-        />
-    
-        <Switch>
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/homepage/' component={HomePage}/>
-            
-
-        </Switch>
-      </div>
-    </Router>
+      <Route path = '/listItem'>
+          <ItemForm
+              values = {itemValues}
+              login = {submitItem}
+              input = {itemInputChange}
+              disabled = {disabled}
+              errors = {itemErrors}
+          />
+      </Route>
+    </div>
   );
 }
 

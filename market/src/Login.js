@@ -33,7 +33,7 @@ function Login(props) {
             <div className = "login inputs">
                 <label>Username
                     <input
-                        value = {values.username}
+                        // value = {values.username}
                         onChange= {handleChange}
                         name = 'username'
                         type = 'text'
@@ -42,7 +42,7 @@ function Login(props) {
 
                 <label>Password
                     <input
-                        value = {values.password}
+                        // value = {values.password}
                         onChange = {handleChange}
                         name = 'password'
                         type = 'password'
@@ -54,8 +54,8 @@ function Login(props) {
                 <button disabled = {disabled}>Login</button>
 
                 <div className = 'errors'>
-                    <div>{errors.username}</div>
-                    <div>{errors.password}</div>
+                    {/* <div>{errors.username}</div>
+                    <div>{errors.password}</div> */}
                 </div>
             </div>
         </form>
