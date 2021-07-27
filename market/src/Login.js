@@ -1,6 +1,4 @@
 import React from 'react';
-import axios from 'axios';
-import { history } from 'react';
 
 function Login(props) {
     const { values, login, change, disabled, errors, } = props;
@@ -8,12 +6,13 @@ function Login(props) {
     const handleChange = event => {
         const { name, value, } = event.target;
         change(name, value);
-    };
+    }
 
     const handleLogin = event => {
         event.preventDefault()
         login()
-        // axios.post('http://tokenurl/api', props.values)
+        // axios.post(‘http://tokenurl/api’, props.values)
+        // //TBD here:
         // // The correct URL to get the token and the dot notation for the token.
         // .then(res => {
         //     console.log(res);
@@ -25,8 +24,6 @@ function Login(props) {
         //     console.log(err);
         // })
     }
-        
-    
 
     return (
         <form className = "login container" onSubmit = {handleLogin}>
