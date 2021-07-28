@@ -60,9 +60,14 @@ function App() {
   //---------- Login Functions ----------  
   //Posts new login
   const postLogin = newLogin => {
+<<<<<<< HEAD
     axios.post("#", newLogin)
+=======
+    axios.post("http://tokenurl/api/login", newLogin)
+>>>>>>> eaf404f (added test url from fakeapi, changes to the handleLogin syntax)
       .then(response => {
           setLogin(response.data);
+          //localStorage.setItem('token', response.data.payload)
       })
       .catch(error => {
           console.log(error);
@@ -83,7 +88,7 @@ function App() {
 
   //Validate and set new login input changes
   const loginInputChange = (name, value) => {
-    validate(name, value)
+    // validate(name, value)
     setLoginValues({
       ...loginValues,
       [name]: value
@@ -137,7 +142,7 @@ function App() {
         name: itemValues.name.trim(),
         description: itemValues.description.trim(),
         price: itemValues.price.trim(),
-        location: itemValues.location.trim(),
+        location: itemValues.location.description.trim(),
     }
     postItem(newItem);
   }
@@ -177,13 +182,13 @@ function App() {
 
   //Check validity of item values every time a item value is changed
   useEffect(() => {
-    schema.isValid(itemValues).then(valid => setDisabled(!valid))
+    formSchema.isValid(itemValues).then(valid => setDisabled(!valid))
   }, [itemValues])
 
   //Validate item values and display item errors if not valid
   const validateItem = (name, value) => {
     reach(schema, name)
-      .validate(value)
+      .validateItem(value)
       .then(() => setItemErrors({ ...itemErrors, [name]: '' }))
       .catch(err => setItemErrors({ ...itemErrors, [name]: err.errors[0]}))
   }
@@ -215,7 +220,7 @@ function App() {
       <Route path = '/listItem'>
           <ItemForm
               values = {itemValues}
-              submit = {submitItem}
+              login = {submitItem}
               input = {itemInputChange}
               disabled = {disabled}
               errors = {itemErrors}
