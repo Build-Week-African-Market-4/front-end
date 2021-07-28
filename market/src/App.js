@@ -159,7 +159,7 @@ function App() {
     };
       const sortProperty = type;
       console.log(sortProperty === 'title');
-      // const sorted = items.sort((a,b) => type === title ? a.title > b.title : type === price ? a.price - b.price);
+      // const sorted = items.sort((a,b) => a.title.localeCompare(b.title));
       const sorted = items.sort((a, b) => a.price - b.price);
       // const sorted = items.sort((a, b) => type === 'title' ? a.title.localeCompare(b.title) : type === 'price' ? a.price - b.price);
       setItems(sorted);
