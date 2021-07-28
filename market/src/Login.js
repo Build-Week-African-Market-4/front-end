@@ -1,6 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
 import styled from 'styled-components'
+import axios from 'axios';
 
 const Wrapper = styled.div`
     text-align: center;
@@ -13,9 +13,6 @@ const Form = styled.form`
     text-align: center;
     width: 20%;
 `
-=======
-import axios from 'axios';
->>>>>>> c48a0cd (added fake url to test api)
 
 function Login(props) {
     const { values, login, input, disabled, errors, } = props;
