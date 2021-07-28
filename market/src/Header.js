@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
+import axios from 'axios';
+import axiosWithAuth from './utils/axiosWithAuth';
 
 
 const NavWrapper = styled.section `
@@ -47,6 +49,20 @@ const Cart = styled(Cart4)`
 `
 
 function Header() {
+
+    const logout = () => {
+        axiosWithAuth()
+        .post("/auth/logout")
+        .then(res => {
+          localStorage.removeItem('token');
+          window.location.href = "/login";
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      };
+
+      
     return (
         <div>
             <NavWrapper>
@@ -67,6 +83,7 @@ function Header() {
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/items-list'>Products</NavLink>
                 <NavLink to = '/listItem'>Add Item</NavLink>
+                <NavLink to = '/' onClick={logout}>Logout</NavLink>
                 <Cart />
             </NavLinks>
             </NavWrapper>

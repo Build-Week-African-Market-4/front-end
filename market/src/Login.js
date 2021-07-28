@@ -24,19 +24,16 @@ function Login(props) {
     const handleLogin = event => {
         event.preventDefault()
         login()
-        // axios.post(‘http://tokenurl/api’, props.values)
-        // //TBD here:
-        // // The correct URL to get the token and the dot notation for the token.
-        // .then(res => {
-        //     console.log(res);
-        //     localStorage.setItem(‘token’, res.data.payload);
-        //     history.push(‘/homepage’);
-        // //TBD here: Double check the history.push
-        // })
-        // .get( err => {
-        //     console.log(err);
-        // })
-    }
+        axios.post("https://african-marketplace-lambda.herokuapp.com/api/auth/login", {username: values.username, password: values.password})
+        .then(res => {
+             console.log(res);
+             localStorage.setItem('token', res.data.payload);
+             window.location.href='/';
+         })
+         .get( err => {
+             console.log(err);
+         })
+    };
 
     return (
         <Wrapper>
