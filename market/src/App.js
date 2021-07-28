@@ -60,11 +60,7 @@ function App() {
   //---------- Login Functions ----------  
   //Posts new login
   const postLogin = newLogin => {
-<<<<<<< HEAD
-    axios.post("#", newLogin)
-=======
     axios.post("http://tokenurl/api/login", newLogin)
->>>>>>> eaf404f (added test url from fakeapi, changes to the handleLogin syntax)
       .then(response => {
           setLogin(response.data);
           //localStorage.setItem('token', response.data.payload)

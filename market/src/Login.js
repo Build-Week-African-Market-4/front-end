@@ -28,7 +28,6 @@ function Login(props) {
     function handleLogin(event) {
         event.preventDefault()
         login()
-<<<<<<< HEAD
         axios.post("https://african-marketplace-lambda.herokuapp.com/api/auth/login", {username: values.username, password: values.password})
         .then(res => {
              console.log(res);
@@ -39,24 +38,6 @@ function Login(props) {
              console.log(err);
          })
     };
-=======
-         axios.get("https://fakestoreapi.com/auth/login", JSON.stringify({
-            username: "mor_2314",
-            password: "83r5^_"
-        }))
-        //TBD here:
-         // The correct URL to get the token and the dot notation for the token.
-         .then(res => {
-             console.log(res);
-            //  localStorage.setItem(‘token’, res.data.payload);
-            //  history.push(‘/homepage’);
-         //TBD here: Double check the history.push
-         })
-         .catch( err => {
-             console.log(err);
-         })
-    }
->>>>>>> c48a0cd (added fake url to test api)
 
     return (
         <Wrapper>

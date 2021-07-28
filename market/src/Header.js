@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
-import axios from 'axios';
 import axiosWithAuth from './utils/axiosWithAuth';
 
 
@@ -62,7 +61,6 @@ function Header() {
         })
       };
 
-      
     return (
         <div>
             <NavWrapper>
@@ -83,7 +81,7 @@ function Header() {
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/items-list'>Products</NavLink>
                 <NavLink to = '/listItem'>Add Item</NavLink>
-                <NavLink to = '/' onClick={logout}>Logout</NavLink>
+                <NavLink onClick={logout}>Logout</NavLink>
                 <Cart />
             </NavLinks>
             </NavWrapper>
