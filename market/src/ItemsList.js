@@ -75,7 +75,7 @@ const Title = styled.div`
 `
 
 export default function ItemsList(props){
-    const { items, sort } = props
+    const { items, sort, sortValues } = props
 
     const onSort = event => {
         event.preventDefault();
@@ -89,13 +89,13 @@ export default function ItemsList(props){
                     <div>20 Results&nbsp;</div>
                     <Sort>
                         <SortIn
-                            // id = 'sort-dropdown'
-                            // onChange = {onSort}
-                            // value = {values.sort}
-                            // name = 'sort'
+                            id = 'sort-dropdown'
+                            onChange = {onSort}
+                            value = {sortValues}
+                            name = 'sort'
                         >
                             <option value = "">Sort by Relevancy</option>
-                            <option value = "first_name">Title</option>
+                            <option value = "title">Title</option>
                             <option value = "price">Price</option>
                         </SortIn>
                     </Sort>
