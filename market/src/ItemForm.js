@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+
 function ItemForm(props) {
     const { values, input, submit, disabled, errors } = props;
 
@@ -15,7 +17,9 @@ function ItemForm(props) {
 
     return (
         <form className = "itemForm container" onSubmit = {handleSubmit}>
+            
             <div className = "item inputs">
+            
                 <label>Name
                     <input
                         value = {values.name}
@@ -23,8 +27,8 @@ function ItemForm(props) {
                         name = 'name'
                         type = 'text'
                     />
-                </label>
-
+                    </label>
+                    
                 <label>Description
                     <input
                         value = {values.description}
@@ -74,10 +78,12 @@ function ItemForm(props) {
                     </select>
                 </label>
             </div>
+            
 
             <div className = "item submit">
+                
                 <button disabled = {disabled}>List Item</button>
-
+                
                 <div className = 'errors'>
                     <div>{errors.name}</div>
                     <div>{errors.description}</div>
