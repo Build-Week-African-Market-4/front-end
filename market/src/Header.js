@@ -46,46 +46,24 @@ const Cart = styled(Cart4)`
 
 function Header(props) {
     const { items } = props;
-    // const logout = () => {
-    //     axiosWithAuth()
-    //     .post("/auth/logout")
-    //     .then(res => {
-    //       localStorage.removeItem('token');
-    //       window.location.href = "/login";
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     })
-    //   };
+    const logout = () => {
+        axiosWithAuth()
+        .post("/auth/logout")
+        .then(res => {
+          localStorage.removeItem('token');
+          window.location.href = "/login";
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      };
 
     return (
         <div>
             <NavWrapper>
             <Logo to = '/'>African Marketplace.</Logo>
 
-            {/* <SearchB> */}
-                {/* https://www.emgoto.com/react-search-bar/
-                    if there's time left finish the search functionality
-                */}
-                
-                {/* <input  type='text'
-                        id='header-search'
-                        placeholder='Search for anything'
-                        width='350px'
-                />
-                <button>Search</button>
-
-            </SearchB> */}
-
-            {/* <Search items = {items} 
-                    searchQuery={searchQuery}
-                    setSearchQuery={setSearchQuery}
-            />
-            <ul>
-                {filteredItems.map((item) => (
-                    <li key={item.id}>{item.title}</li>
-                ))}
-            </ul> */}
+         
 
             <Search placeholder="Search for anything" data={items} />
 
@@ -93,7 +71,7 @@ function Header(props) {
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/items-list'>Products</NavLink>
                 <NavLink to = '/listItem'>Add Item</NavLink>
-                {/* <NavLink onClick={logout}>Logout</NavLink> */}
+                <NavLink onClick={logout}>Logout</NavLink>
                 <Cart />
             </NavLinks>
             </NavWrapper>
