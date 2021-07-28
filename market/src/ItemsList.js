@@ -12,11 +12,11 @@ export default function ItemsList(props){
                 >
                 <img 
                 className='items-list-image'
-                src={item.avatar}
-                alt={item.first_name}
+                src={item.image}
+                alt={item.title}
                 />
-                <p>{item.first_name}</p>
-                <p>${item.last_name}</p>
+                <p>{item.title}</p>
+                <p>${item.price}</p>
                 </div>
             ))}
         </div>

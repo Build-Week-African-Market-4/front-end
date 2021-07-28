@@ -99,10 +99,10 @@ function App() {
 //---------- Submit Item Functions ---------- 
    //Get item data
    const getItems = () => {
-    axios.get("https://reqres.in/api/users")
+    axios.get("https://fakestoreapi.com/products")
       .then(response => {
-        setItems(response.data.data)
-        console.log(response.data.data)
+        setItems(response.data)
+        console.log(response.data)
       })
       .catch(error => {
         console.log(error);
