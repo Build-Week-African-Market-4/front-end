@@ -77,6 +77,7 @@ const Title = styled.div`
 export default function ItemsList(props){
     const { items, sortType, setSortType, setItems } = props
 
+    //Updates state of sort dropdown options and sorts item list according to the dropdown option type
     const onSort = event => {
         const newType = event.target.value;
         setSortType(newType);

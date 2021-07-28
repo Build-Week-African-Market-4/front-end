@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
-// import axiosWithAuth from './utils/axiosWithAuth';
+import axiosWithAuth from './utils/axiosWithAuth';
 import Search from './Search'
 
 
@@ -48,17 +48,17 @@ const Cart = styled(Cart4)`
 function Header(props) {
     const { items } = props;
 
-    // const logout = () => {
-    //     axiosWithAuth()
-    //     .post("/auth/logout")
-    //     .then(res => {
-    //       localStorage.removeItem('token');
-    //       window.location.href = "/login";
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     })
-    //   };
+    const logout = () => {
+        axiosWithAuth()
+        .post("/auth/logout")
+        .then(res => {
+          localStorage.removeItem('token');
+          window.location.href = "/login";
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      };
 
     return (
         <div>
