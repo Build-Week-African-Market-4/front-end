@@ -183,7 +183,7 @@ function App() {
       <Header />
 
       <Route exact path = '/'>
-          <Home />
+          <Home items = {items} />
       </Route>    
       <Route path='/items-list'>
         <ItemsList 
