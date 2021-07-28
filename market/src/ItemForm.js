@@ -39,7 +39,8 @@ function ItemForm(props) {
                         value = {values.price}
                         onChange = {handleChange}
                         name = 'price'
-                        type = 'text'
+                        type = 'number'
+                        min = '0'
                     />
                 </label>
 
@@ -80,7 +81,6 @@ function ItemForm(props) {
                 <div className = 'errors'>
                     <div>{errors.name}</div>
                     <div>{errors.description}</div>
-                    <div>{errors.price}</div>
                 </div>
             </div>
         </form>

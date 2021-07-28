@@ -9,7 +9,7 @@ import formSchema from './validation/formSchema';
 import schema from './validation/schema';
 import axios from 'axios';
 import { reach } from 'yup';
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 const initialLoginValues = {
   username: '',
@@ -26,20 +26,24 @@ const initialItems = []
 const initialItemValues = {
   name: '',
   description: '',
-  price: '',
+  price: 0,
   location: '',
 }
 
 const initialItemErrors = {
   name: '',
   description: '',
-  price: '',
+  price: 0,
   location: '',
 }
 
+// const sortList = {
+//     list: '',
+// }
+
 function App() {
   //States
-  const [login, setLogin] = useState([])
+  const [login, setLogin] = useState(null)
   const [loginValues, setLoginValues] = useState(initialLoginValues);
   const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
 
@@ -47,12 +51,14 @@ function App() {
   const [itemValues, setItemValues] = useState(initialItemValues);
   const [itemErrors, setItemErrors] = useState(initialItemErrors);
 
+  // const [sortType, setSortType] = useState(sortList);
+
   const [disabled, setDisabled] = useState(true);
   
   //---------- Login Functions ----------  
   //Posts new login
   const postLogin = newLogin => {
-    axios.post("http://tokenurl/api", newLogin)
+    axios.post("#", newLogin)
       .then(response => {
           setLogin(response.data);
       })
@@ -143,6 +149,16 @@ function App() {
     })
   }
 
+  //Sorts item listings based on dropdown type selected
+  const sortItemsBy = type => {
+      const types = {
+        first_name: 'first_name',
+        price: 'price',
+      };
+      const sorted = items.sort(types[type]);
+      setItems(sorted);
+  }
+
   //Get
   useEffect(() => {
     getItems()
@@ -169,7 +185,10 @@ function App() {
           <Home />
       </Route>    
       <Route path='/items-list'>
-        <ItemsList items = {items}/>
+        <ItemsList 
+            items = {items}
+            // sort = {sortItemsBy}
+        />
       </Route>
       <Route path = '/login'>
           <Login

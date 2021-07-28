@@ -11,8 +11,7 @@ const schema = Yup.object().shape({
         .trim()
         .required('Description is required'),
     price: Yup
-        .string()
-        .trim()
+        .number()
         .required('Price is required'),
     location: Yup
         .string()
