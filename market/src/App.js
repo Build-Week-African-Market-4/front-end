@@ -191,7 +191,7 @@ function App() {
 
   return (
     <div className = "marketApp">
-      <Header />
+      <Header items = {items} />
 
       <Route exact path = '/'>
           <Home items = {items} />

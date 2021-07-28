@@ -18,14 +18,14 @@ const Item = styled.div`
     /* border: solid 1px red; */
     display: flex;
     flex-direction: column;
-    width: 200px;
-    height: 275px; 
+    width: 250px;
+    height: 325px; 
     margin: 5px;
 `
 // ITEM IMAGE
 const ProductImg = styled.img`
-   width: 200px;
-   height: 200px;
+   width: 250px;
+   height: 250px;
    object-fit: scale-down;
 `
 const Price = styled.div`
@@ -44,7 +44,7 @@ const Title = styled.div`
 
 function Bestsellers(props) {
     const { items, sort } = props
-    const bestsellers = items.slice(0,10)
+    const bestsellers = items.slice(0,14)
     return (
         <div>
             <ItemDiv>
