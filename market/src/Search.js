@@ -121,4 +121,6 @@ function Search({ placeholder, data }) {
     );
   }
 
+
   export default Search;
+

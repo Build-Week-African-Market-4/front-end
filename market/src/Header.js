@@ -14,9 +14,6 @@ const NavWrapper = styled.section `
     margin-bottom:30px;
     border-bottom: solid 1px gray;
 `
-
-
-
 const Logo = styled(Link)`
     text-transform:lowercase;
     letter-spacing: 1.5px;
@@ -65,6 +62,7 @@ function Header(props) {
         <div>
             <NavWrapper>
             <Logo to = '/'>African Marketplace.</Logo>
+
             {/* <SearchB> */}
                 {/* https://www.emgoto.com/react-search-bar/
                     if there's time left finish the search functionality
@@ -76,7 +74,7 @@ function Header(props) {
                         width='350px'
                 />
                 <button>Search</button>
-            
+
             </SearchB> */}
 
             {/* <Search items = {items} 
@@ -90,6 +88,7 @@ function Header(props) {
             </ul> */}
 
             <Search placeholder="Search for anything" data={items} />
+
             <NavLinks>
                 <NavLink to = '/login'>Sign In</NavLink>
                 <NavLink to = '/items-list'>Products</NavLink>

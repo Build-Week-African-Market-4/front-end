@@ -19,13 +19,13 @@ const Item = styled.div`
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 250px; 
+    height: 325px; 
     margin: 5px;
 `
 // ITEM IMAGE
 const ProductImg = styled.img`
-   width: 200px;
-   height: 200px;
+   width: 250px;
+   height: 250px;
    object-fit: scale-down;
 `
 const Price = styled.div`
