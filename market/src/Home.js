@@ -46,7 +46,7 @@ export default function Home(props){
                 </ShopBtn>  
             </Banner>
             <ItemsWrapper>
-                <h3>See whats new.</h3>
+                <h3>Shop our bestsellers</h3>
                <Bestsellers items={items} />
             </ItemsWrapper>            
         </div>
