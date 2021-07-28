@@ -5,6 +5,7 @@ import Login from './Login';
 import ItemForm from './ItemForm';
 import ItemsList from './ItemsList'
 import Header from './Header'
+import Footer from './Footer'
 import formSchema from './validation/formSchema';
 import schema from './validation/schema';
 import axios from 'axios';
@@ -209,6 +210,7 @@ function App() {
               errors = {itemErrors}
           />
       </Route>
+      <Footer />
     </div>
   );
 }

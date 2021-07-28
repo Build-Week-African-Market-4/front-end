@@ -9,10 +9,11 @@ const NavWrapper = styled.section `
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom:30px;
+    border-bottom: solid 1px gray;
 `
 
 const Search = styled.section`
-    width: 30%;
 `
 
 const Logo = styled(Link)`
@@ -58,7 +59,7 @@ function Header() {
                 <input  type='text'
                         id='header-search'
                         placeholder='Search for anything'
-                        width='300px'
+                        width='350px'
                 />
                 <button>Search</button>
             </Search>
