@@ -3,6 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
 
+
 const NavWrapper = styled.section `
     padding: 0% 1%;
     display: flex;
