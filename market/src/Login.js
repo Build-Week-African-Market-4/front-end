@@ -25,13 +25,13 @@ function Login(props) {
     function handleLogin(event) {
         event.preventDefault()
         login()
-        axios.post("https://african-marketplace-lambda.herokuapp.com/api/auth/login", {username: values.username, password: values.password})
+        axios.post("https://african-marketplace-buildweek.herokuapp.com/api/auth/login", {username: values.username, password: values.password})
         .then(res => {
              console.log(res);
-             localStorage.setItem('token', res.data.payload);
-             window.location.href='/';
+            //  localStorage.setItem('token', res.data.payload);
+            //  window.location.href='/';
          })
-         .get( err => {
+         .catch( err => {
              console.log(err);
          })
     };

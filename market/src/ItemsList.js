@@ -75,23 +75,33 @@ const Title = styled.div`
 `
 
 export default function ItemsList(props){
-    const { items, sort, sortValues } = props
+    const { items, sortType, setSortType, setItems } = props
 
     const onSort = event => {
-        event.preventDefault();
-        sort();
+        const newType = event.target.value;
+        setSortType(newType);
+        let sorted;
+        if (newType === 'price') {
+            sorted = items.sort((a, b) => a.price - b.price);
+            console.log(newType)
+            setItems(sorted)
+        } else if (newType === 'title') {
+            sorted = items.sort((a, b) => a.title.localeCompare(b.title));
+            console.log(newType)
+            setItems(sorted)
+        }
     }
 
     return(
         <ItemsWrapper>
             <ItemsContent>
                 <ItemsFilter>
-                    <div>20 Results&nbsp;</div>
+                <div>{items.length} Results&nbsp;</div>
                     <Sort>
                         <SortIn
                             id = 'sort-dropdown'
                             onChange = {onSort}
-                            value = {sortValues}
+                            value = {sortType}
                             name = 'sort'
                         >
                             <option value = "">Sort by Relevancy</option>
