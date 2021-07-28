@@ -38,9 +38,10 @@ const initialItemErrors = {
   location: '',
 }
 
-// const sortList = {
-//     list: '',
-// }
+const sortType = {
+  title: 'title',
+  price: 'price',
+}
 
 function App() {
   //States
@@ -52,7 +53,7 @@ function App() {
   const [itemValues, setItemValues] = useState(initialItemValues);
   const [itemErrors, setItemErrors] = useState(initialItemErrors);
 
-  // const [sortType, setSortType] = useState(sortList);
+  const [sortType, setSortType] = useState('price');
 
   const [disabled, setDisabled] = useState(true);
   
@@ -152,15 +153,24 @@ function App() {
 
   //Sorts item listings based on dropdown type selected
   const sortItemsBy = type => {
-      const types = {
-        first_name: 'first_name',
+    const types = {
+        title: 'title',
         price: 'price',
-      };
-      const sorted = items.sort(types[type]);
+    };
+      const sortProperty = type;
+      console.log(sortProperty === 'title');
+      // const sorted = items.sort((a,b) => type === title ? a.title > b.title : type === price ? a.price - b.price);
+      const sorted = items.sort((a, b) => a.price - b.price);
+      // const sorted = items.sort((a, b) => type === 'title' ? a.title.localeCompare(b.title) : type === 'price' ? a.price - b.price);
       setItems(sorted);
   }
 
-  //Get
+  useEffect(() => {
+    sortItemsBy(sortType)
+  }, [sortType])
+
+
+  //Get items from API once
   useEffect(() => {
     getItems()
   },[])
@@ -188,7 +198,8 @@ function App() {
       <Route path='/items-list'>
         <ItemsList 
             items = {items}
-            // sort = {sortItemsBy}
+            sort = {sortItemsBy}
+            sortValues = {sortType}
         />
       </Route>
       <Route path = '/login'>
