@@ -1,5 +1,17 @@
 import React from 'react';
+import styled from 'styled-components'
 
+const Wrapper = styled.div`
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+`
+
+const Form = styled.form`
+    text-align: center;
+    width: 20%;
+`
 
 
 function ItemForm(props) {
@@ -16,7 +28,8 @@ function ItemForm(props) {
     }
 
     return (
-        <form className = "itemForm container" onSubmit = {handleSubmit}>
+        <Wrapper>
+        <Form className = "itemForm container" onSubmit = {handleSubmit}>
             
             <div className = "item inputs">
             
@@ -89,7 +102,8 @@ function ItemForm(props) {
                     <div>{errors.description}</div>
                 </div>
             </div>
-        </form>
+        </Form>
+        </Wrapper>
     );
 }
 

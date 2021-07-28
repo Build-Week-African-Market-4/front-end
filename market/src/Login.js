@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+`
+
+const Form = styled.form`
+    text-align: center;
+    width: 20%;
+`
 
 function Login(props) {
     const { values, login, input, disabled, errors, } = props;
@@ -26,9 +39,10 @@ function Login(props) {
     }
 
     return (
-        <form className = "login container" onSubmit = {handleLogin}>
+        <Wrapper>
+        <Form className = "login container" onSubmit = {handleLogin}>
             <div className = "login inputs">
-                <label>Username
+                <label>Username: &nbsp;
                     <input
                         value = {values.username}
                         onChange= {handleChange}
@@ -37,7 +51,7 @@ function Login(props) {
                     />
                 </label>
 
-                <label>Password
+                <label>Password: &nbsp;
                     <input
                         value = {values.password}
                         onChange = {handleChange}
@@ -55,7 +69,7 @@ function Login(props) {
                     <div>{errors.password}</div>
                 </div>
             </div>
-        </form>
+        </Form></Wrapper>
     );
 }
 
