@@ -167,7 +167,9 @@ function App() {
 
   return (
     <div className = "marketApp">
-      <Header items = {items} />
+
+      <Header items={items}/>
+
 
       <Route exact path = '/'>
           <Home items = {items} />
@@ -175,10 +177,12 @@ function App() {
       <Route path='/items-list'>
         <ItemsList 
             items = {items}
-            // sort = {sortItemsBy}
-            sortType = {sortType}
-            setSortType = {setSortType}
-            setItems = {setItems}
+
+             // sort = {sortItemsBy}
+             sortType = {sortType}
+             setSortType = {setSortType}
+             setItems = {setItems}
+
         />
       </Route>
       <Route path = '/login'>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
-// import axiosWithAuth from './utils/axiosWithAuth';
+import axiosWithAuth from './utils/axioswithAuth';
 import Search from './Search'
 
 
@@ -14,7 +14,6 @@ const NavWrapper = styled.section `
     margin-bottom:30px;
     border-bottom: solid 1px gray;
 `
-
 const Logo = styled(Link)`
     text-transform:lowercase;
     letter-spacing: 1.5px;
@@ -47,7 +46,6 @@ const Cart = styled(Cart4)`
 
 function Header(props) {
     const { items } = props;
-
     // const logout = () => {
     //     axiosWithAuth()
     //     .post("/auth/logout")
@@ -76,7 +74,7 @@ function Header(props) {
                         width='350px'
                 />
                 <button>Search</button>
-                
+
             </SearchB> */}
 
             {/* <Search items = {items} 

@@ -12,7 +12,6 @@ const DataResult = styled.div`
     overflow-y: auto;
     z-index:99;
     position: absolute;
-
     &::-webkit-scrollbar {display:none}
 `
 const ALink = styled.a`
@@ -74,19 +73,19 @@ function Search({ placeholder, data }) {
       const newFilter = data.filter((value) => {
         return value.title.toLowerCase().includes(searchWord.toLowerCase());
       });
-  
+
       if (searchWord === "") {
         setFilteredData([]);
       } else {
         setFilteredData(newFilter);
       }
     }
-  
+
     const clearInput = () => {
       setFilteredData([]);
       setWordEntered("");
     };
-  
+
     return (
     <div>
         <SearchInputs>
@@ -121,8 +120,7 @@ function Search({ placeholder, data }) {
     </div>
     );
   }
-  
-  export default Search;
-  
 
-  
+
+  export default Search;
+

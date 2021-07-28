@@ -96,7 +96,7 @@ export default function ItemsList(props){
         <ItemsWrapper>
             <ItemsContent>
                 <ItemsFilter>
-                    <div>{items.length} Results&nbsp;</div>
+                <div>{items.length} Results&nbsp;</div>
                     <Sort>
                         <SortIn
                             id = 'sort-dropdown'
