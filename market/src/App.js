@@ -25,14 +25,16 @@ const initialLoginErrors = {
 const initialItems = []
 
 const initialItemValues = {
-  name: '',
+  title: '',
+  image: '',
   description: '',
   price: 0,
   location: '',
 }
 
 const initialItemErrors = {
-  name: '',
+  title: '',
+  image: '',
   description: '',
   price: 0,
   location: '',
@@ -115,7 +117,7 @@ function App() {
 
   //Posts new item to item listings
   const postItem = newItem => {
-    axios.post("#", newItem)
+    axios.post("https://fakestoreapi.com/products", newItem)
       .then(response => {
           setItems([response.data, ...items]);
       })
@@ -130,10 +132,11 @@ function App() {
   //Submit new item values
   const submitItem = () => {
     const newItem = {
-        name: itemValues.name.trim(),
+        title: itemValues.title.trim(),
+        image: itemValues.image.trim(),
         description: itemValues.description.trim(),
         price: itemValues.price.trim(),
-        location: itemValues.location.description.trim(),
+        location: itemValues.location.trim(),
     }
     postItem(newItem);
   }
@@ -154,22 +157,20 @@ function App() {
 
   //Check validity of item values every time a item value is changed
   useEffect(() => {
-    formSchema.isValid(itemValues).then(valid => setDisabled(!valid))
+    schema.isValid(itemValues).then(valid => setDisabled(!valid))
   }, [itemValues])
 
   //Validate item values and display item errors if not valid
   const validateItem = (name, value) => {
     reach(schema, name)
-      .validateItem(value)
+      .validate(value)
       .then(() => setItemErrors({ ...itemErrors, [name]: '' }))
       .catch(err => setItemErrors({ ...itemErrors, [name]: err.errors[0]}))
   }
 
   return (
     <div className = "marketApp">
-
-      <Header items={items}/>
-
+      <Header items = {items} />
 
       <Route exact path = '/'>
           <Home items = {items} />
@@ -177,12 +178,9 @@ function App() {
       <Route path='/items-list'>
         <ItemsList 
             items = {items}
-
-             // sort = {sortItemsBy}
-             sortType = {sortType}
-             setSortType = {setSortType}
-             setItems = {setItems}
-
+            sortType = {sortType}
+            setSortType = {setSortType}
+            setItems = {setItems}
         />
       </Route>
       <Route path = '/login'>
@@ -198,7 +196,7 @@ function App() {
       <Route path = '/listItem'>
           <ItemForm
               values = {itemValues}
-              login = {submitItem}
+              submit = {submitItem}
               input = {itemInputChange}
               disabled = {disabled}
               errors = {itemErrors}
