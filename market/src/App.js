@@ -11,6 +11,7 @@ import schema from './validation/schema';
 import axios from 'axios';
 import { reach } from 'yup';
 import { Route } from 'react-router-dom';
+import * as yup from 'yup'
 
 const initialLoginValues = {
   username: '',
@@ -22,21 +23,20 @@ const initialLoginErrors = {
   password: '',
 }
 
-const initialItems = []
-
 const initialItemValues = {
-  name: '',
-  description: '',
-  price: 0,
-  location: '',
+  image: '',
+  title: '',
+  price: '',
 }
 
 const initialItemErrors = {
-  name: '',
-  description: '',
-  price: 0,
-  location: '',
+  image: '',
+  title: '',
+  price: '',
 }
+
+const initialItems = []
+const initialDisabled = true
 
 function App() {
   //States
@@ -50,7 +50,7 @@ function App() {
 
   const [sortType, setSortType] = useState('');
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(initialDisabled);
   
   //---------- Login Functions ----------  
   //Posts new login
@@ -115,9 +115,10 @@ function App() {
 
   //Posts new item to item listings
   const postItem = newItem => {
-    axios.post("#", newItem)
+    axios.post("https://fakestoreapi.com/products", newItem)
       .then(response => {
-          setItems([response.data, ...items]);
+          setItems([...items,response.data]);
+          console.log([...items,response.data])
       })
       .catch(error => {
           console.log(error);
@@ -130,20 +131,20 @@ function App() {
   //Submit new item values
   const submitItem = () => {
     const newItem = {
-        name: itemValues.name.trim(),
-        description: itemValues.description.trim(),
+        image: itemValues.image.trim(),
+        title: itemValues.title.trim(),
         price: itemValues.price.trim(),
-        location: itemValues.location.description.trim(),
+        
     }
     postItem(newItem);
   }
 
   //Validate and set new item input changes
-  const itemInputChange = (name, value) => {
-    validateItem(name, value)
+  const itemInputChange = (title, value) => {
+    validateItem(title, value)
     setItemValues({
       ...itemValues,
-      [name]: value
+      [title]: value
     })
   }
 
@@ -158,11 +159,12 @@ function App() {
   }, [itemValues])
 
   //Validate item values and display item errors if not valid
-  const validateItem = (name, value) => {
-    reach(schema, name)
-      .validateItem(value)
-      .then(() => setItemErrors({ ...itemErrors, [name]: '' }))
-      .catch(err => setItemErrors({ ...itemErrors, [name]: err.errors[0]}))
+  const validateItem = (title, value) => {
+      yup
+      .reach(schema, title)
+      .validate(value)
+      .then(() => setItemErrors({ ...itemErrors, [title]: '' }))
+      .catch(err => setItemErrors({ ...itemErrors, [title]: err.errors[0]}))
   }
 
   return (
@@ -194,8 +196,8 @@ function App() {
       <Route path = '/listItem'>
           <ItemForm
               values = {itemValues}
-              login = {submitItem}
-              input = {itemInputChange}
+              submit = {submitItem}
+              change = {itemInputChange}
               disabled = {disabled}
               errors = {itemErrors}
           />

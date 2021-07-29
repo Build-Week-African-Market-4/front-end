@@ -15,11 +15,12 @@ const Form = styled.form`
 
 
 function ItemForm(props) {
-    const { values, input, submit, disabled, errors } = props;
+    const { values, submit, change, disabled, errors } = props;
 
     const handleChange = event => {
-        const { name, value, } = event.target;
-        input(name, value);
+        const { title, value } = event.target;
+        const valueToUse = value
+        change(title, valueToUse);
     }
 
     const handleSubmit = event => {
@@ -33,20 +34,20 @@ function ItemForm(props) {
             
             <div className = "item inputs">
             
-                <label>Name
+                <label>Image URL
                     <input
-                        value = {values.name}
+                        value = {values.image}
                         onChange = {handleChange}
-                        name = 'name'
+                        name = 'image'
                         type = 'text'
                     />
                     </label>
                     
-                <label>Description
+                <label>Title
                     <input
-                        value = {values.description}
+                        value = {values.title}
                         onChange = {handleChange}
-                        name = 'description'
+                        name = 'title'
                         type = 'text'
                     />
                 </label>
@@ -61,7 +62,7 @@ function ItemForm(props) {
                     />
                 </label>
 
-                <label>Location
+                {/* <label>Location
                     <select
                         id = 'location-dropdown'
                         onChange = {handleChange}
@@ -89,7 +90,7 @@ function ItemForm(props) {
                         <option value = 'Zambia'>Zambia</option>
                         <option value = 'Zimbabwe'>Zimbabwe</option>
                     </select>
-                </label>
+                </label> */}
             </div>
             
 
@@ -98,8 +99,8 @@ function ItemForm(props) {
                 <button disabled = {disabled}>List Item</button>
                 
                 <div className = 'errors'>
-                    <div>{errors.name}</div>
-                    <div>{errors.description}</div>
+                    <div>{errors.title}</div>
+                    {/* <div>{errors.description}</div> */}
                 </div>
             </div>
         </Form>
