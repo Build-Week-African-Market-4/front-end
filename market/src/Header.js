@@ -1,5 +1,5 @@
-import React, {useState} from 'react'
-import { Link, Route } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components'
 import {Cart4} from '@styled-icons/bootstrap/Cart4'
 import axiosWithAuth from './utils/axioswithAuth';

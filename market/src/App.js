@@ -39,12 +39,12 @@ const initialItemErrors = {
   price: 0,
   location: '',
 }
-
+// New comment
 function App() {
   //States
-  const [login, setLogin] = useState(null)
+  const [/*login,*/ setLogin] = useState(null)
   const [loginValues, setLoginValues] = useState(initialLoginValues);
-  const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
+const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
 
   const [items, setItems] = useState(initialItems)
   const [itemValues, setItemValues] = useState(initialItemValues);
@@ -81,7 +81,7 @@ function App() {
 
   //Validate and set new login input changes
   const loginInputChange = (name, value) => {
-    // validate(name, value)
+    validate(name, value)
     setLoginValues({
       ...loginValues,
       [name]: value
