@@ -39,7 +39,7 @@ const initialItemErrors = {
   price: 0,
   location: '',
 }
-
+// New comment
 function App() {
   //States
   const [/*login,*/ setLogin] = useState(null)
