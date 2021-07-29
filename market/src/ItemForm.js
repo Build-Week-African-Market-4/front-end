@@ -33,14 +33,23 @@ function ItemForm(props) {
             
             <div className = "item inputs">
             
-                <label>Name
+                <label>Title
                     <input
-                        value = {values.name}
+                        value = {values.title}
                         onChange = {handleChange}
-                        name = 'name'
+                        name = 'title'
                         type = 'text'
                     />
-                    </label>
+                </label>
+
+                <label>Image URL
+                    <input
+                        value = {values.image}
+                        onChange = {handleChange}
+                        name = 'image'
+                        type = 'string'
+                    />
+                </label>
                     
                 <label>Description
                     <input
