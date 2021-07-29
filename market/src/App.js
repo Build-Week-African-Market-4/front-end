@@ -44,7 +44,7 @@ function App() {
   //States
   const [/*login,*/ setLogin] = useState(null)
   const [loginValues, setLoginValues] = useState(initialLoginValues);
-const [loginErrors, /*setLoginErrors*/] = useState(initialLoginErrors);
+const [loginErrors, setLoginErrors] = useState(initialLoginErrors);
 
   const [items, setItems] = useState(initialItems)
   const [itemValues, setItemValues] = useState(initialItemValues);
@@ -81,7 +81,7 @@ const [loginErrors, /*setLoginErrors*/] = useState(initialLoginErrors);
 
   //Validate and set new login input changes
   const loginInputChange = (name, value) => {
-    // validate(name, value)
+    validate(name, value)
     setLoginValues({
       ...loginValues,
       [name]: value
@@ -95,12 +95,12 @@ const [loginErrors, /*setLoginErrors*/] = useState(initialLoginErrors);
 
 
   //Validate login values and display login errors if not valid
-  // const validate = (name, value) => {
-  //   reach(formSchema, name)
-  //     .validate(value)
-  //     .then(() => setLoginErrors({ ...loginErrors, [name]: '' }))
-  //     .catch(err => setLoginErrors({ ...loginErrors, [name]: err.errors[0]}))
-  // }
+  const validate = (name, value) => {
+    reach(formSchema, name)
+      .validate(value)
+      .then(() => setLoginErrors({ ...loginErrors, [name]: '' }))
+      .catch(err => setLoginErrors({ ...loginErrors, [name]: err.errors[0]}))
+  }
 
 //---------- Submit Item Functions ---------- 
    //Get item data
