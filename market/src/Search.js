@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import React, {useState} from 'react'
 import {Close} from '@styled-icons/evaicons-solid/Close'
 import {SearchAlt} from '@styled-icons/boxicons-regular/SearchAlt'
@@ -107,7 +106,7 @@ function Search({ placeholder, data }) {
           </SearchIcons>
 {/* FILTERED DATA MAP */}
         </SearchInputs>
-        {filteredData.length != 0 && (
+        {filteredData.length !== 0 && (
           <DataResult>
             {filteredData.slice(0, 10).map((value, key) => {
               return (

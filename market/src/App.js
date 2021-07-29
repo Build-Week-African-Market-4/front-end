@@ -81,7 +81,7 @@ function App() {
 
   //Validate and set new login input changes
   const loginInputChange = (name, value) => {
-    // validate(name, value)
+    validate(name, value)
     setLoginValues({
       ...loginValues,
       [name]: value

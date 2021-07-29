@@ -43,7 +43,7 @@ const Title = styled.div`
 `
 
 function Bestsellers(props) {
-    const { items, sort } = props
+    const { items } = props
     const bestsellers = items.slice(0,14)
     return (
         <div>
@@ -52,7 +52,7 @@ function Bestsellers(props) {
             {bestsellers.map(item => (
                 <Item
                         // className='item-card'
-                        // key={item.id}
+                        key={item.id}
                     >
                 <ProductImg 
                     className='items-list-image'

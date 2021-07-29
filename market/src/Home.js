@@ -27,7 +27,7 @@ const ShopBtn = styled.button`
 `
 
 export default function Home(props){
-    const { items, sort } = props
+    const { items } = props
     
     const history = useHistory()
     const routeToItems = () => {
